@@ -272,59 +272,30 @@
                 <!-- Layout Utama: Kolom di Desktop, Stack di Mobile -->
                 <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-2 lg:space-y-0">
 
-                    <!-- KIRI (1/3): THERMOMETER & VESSEL DISPLAY -->
+                    <!-- KIRI (1/3): PID GAMBAR DENGAN THERMOMETER OVERLAY -->
                     <div class="lg:w-1/3 flex justify-center items-center p-2 bg-gray-50 rounded-lg shadow-inner lg:min-h-[500px] min-h-[280px]">
-                        <div class="flex flex-col items-center gap-4">
-                            <!-- Thermometer -->
-                            <div class="thermometer-container">
-                                <div class="thermometer">
-                                    <div class="thermometer-scale">
-                                        <div class="thermometer-tick"><span></span>150°</div>
-                                        <div class="thermometer-tick"><span></span>120°</div>
-                                        <div class="thermometer-tick"><span></span>90°</div>
-                                        <div class="thermometer-tick"><span></span>60°</div>
-                                        <div class="thermometer-tick"><span></span>30°</div>
-                                        <div class="thermometer-tick"><span></span>0°</div>
+                        <!-- PID Gambar Background -->
+                        <div class="w-full h-full flex justify-center items-center relative">
+                            <img src="PID.jpg" alt="PID Diagram" class="w-full h-full object-contain rounded-lg">
+                            
+                            <!-- Thermometer Overlay - Positioned on Pressurized Tank Line -->
+                            <div class="absolute z-10 flex flex-col items-center gap-2" style="top: 35%; left: 15%; transform: translate(-50%, -50%);">
+                                <div class="thermometer-container">
+                                    <div class="thermometer">
+                                        <div class="thermometer-scale">
+                                            <div class="thermometer-tick"><span></span>150°</div>
+                                            <div class="thermometer-tick"><span></span>120°</div>
+                                            <div class="thermometer-tick"><span></span>90°</div>
+                                            <div class="thermometer-tick"><span></span>60°</div>
+                                            <div class="thermometer-tick"><span></span>30°</div>
+                                            <div class="thermometer-tick"><span></span>0°</div>
+                                        </div>
+                                        <div id="thermometer-liquid" class="thermometer-liquid" style="height: 40%;"></div>
+                                        <div class="thermometer-bulb"></div>
                                     </div>
-                                    <div id="thermometer-liquid" class="thermometer-liquid" style="height: 40%;"></div>
-                                    <div class="thermometer-bulb"></div>
+                                    <div class="thermometer-value" id="thermometer-display-value">96.82 °C</div>
+                                    <div class="thermometer-label">Current Temperature</div>
                                 </div>
-                                <div class="thermometer-value" id="thermometer-display-value">96.82 °C</div>
-                                <div class="thermometer-label">Current Temperature</div>
-                            </div>
-
-                            <!-- Plant Vessel Visualization -->
-                            <div class="plant-vessel-section">
-                                <svg class="vessel-graphic" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Vessel outline (furnace shape) -->
-                                    <defs>
-                                        <linearGradient id="vesselGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
-                                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
-                                        </linearGradient>
-                                        <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.8" />
-                                            <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9" />
-                                        </linearGradient>
-                                    </defs>
-                                    
-                                    <!-- Main vessel body -->
-                                    <rect x="35" y="10" width="90" height="80" rx="8" ry="8" fill="none" stroke="url(#vesselGradient)" stroke-width="3"/>
-                                    
-                                    <!-- Liquid inside vessel (dynamic height) -->
-                                    <rect id="vessel-liquid" x="38" y="70" width="84" height="17" rx="6" ry="6" fill="url(#liquidGradient)"/>
-                                    
-                                    <!-- Vessel cap/top -->
-                                    <rect x="40" y="5" width="80" height="8" rx="2" ry="2" fill="#1e3a8a" stroke="#0f172a" stroke-width="1"/>
-                                    
-                                    <!-- Heater indicator -->
-                                    <circle cx="50" cy="45" r="5" fill="#ef4444" opacity="0.7"/>
-                                    <circle cx="110" cy="45" r="5" fill="#ef4444" opacity="0.7"/>
-                                    
-                                    <!-- Temperature indicator icon -->
-                                    <text x="80" y="50" font-size="20" font-weight="bold" text-anchor="middle" fill="#dc2626">🔥</text>
-                                </svg>
-                                <div class="vessel-label">Pressure Vessel (Furnace)</div>
                             </div>
                         </div>
                     </div>
